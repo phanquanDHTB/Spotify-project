@@ -33,13 +33,25 @@
       color: white;
       z-index: 1000;
       position: relative;
+      .background_img {
+        width: 100%;
+        // object-fit: cover;
+      }
       .info {
         .info_text {
         }
         .img {
-          width: 100%;
-          object-fit: cover;
-          border-radius: 10px;
+        }
+        .img_rotate {
+          animation: rotation 10s infinite linear;
+          @keyframes rotation {
+            from {
+              transform: rotate(0deg);
+            }
+            to {
+              transform: rotate(359deg);
+            }
+          }
         }
       }
       .overlay {
@@ -65,7 +77,8 @@
         border-radius: 50%;
       }
       .active {
-        background-color: #ccc;
+        background-color: #111827ad;
+        color: #fff;
       }
     }
   }

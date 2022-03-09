@@ -6,13 +6,16 @@ import {faSpotify} from '@fortawesome/free-brands-svg-icons'
 import axios from "axios"
 import AudioPlayer from 'react-h5-audio-player'
 import "react-h5-audio-player/lib/styles.css"
+import Rotation from 'react-rotation'
 
 export default function Home() {
 const listSongAPI = 'http://localhost:3000/listSong'
 
   const [data, setData] = useState([])
   const [id, setId] = useState(null)
+  const [isRotate, setIsRotate] = useState(false)
   const [currentSong,setCurrentSong] = useState({})
+  console.log(JSON.stringify(currentSong) === '{}')
 
   useEffect(() => {
     axios.get(listSongAPI)
@@ -30,17 +33,20 @@ const listSongAPI = 'http://localhost:3000/listSong'
   // handle event
   const handleClickSong = (song, index) => {
     setId(song.id)
+    setIsRotate(true)
     const currentSong = data.find((x) => x.id === song.id )
     console.log(currentSong);
     setCurrentSong(currentSong)
   }
 
   const handleClickNext = () =>{
+    setIsRotate(true)
     setId(id + 1);
     const currentSong = data.find((x) => x.id === id + 1 )
     setCurrentSong(currentSong)
   }
   const handleClickPrevios = () => {
+    setIsRotate(true)
     setId(id - 1);
     const currentSong = data.find((x) => x.id === id - 1 )
     setCurrentSong(currentSong)
@@ -59,7 +65,9 @@ const listSongAPI = 'http://localhost:3000/listSong'
            <div className={classes.overlay} style={{backgroundImage: `url(${currentSong.links ? currentSong.links.images[1].url: ""})`}}>
           </div>
           
-          {currentSong && 
+          {JSON.stringify(currentSong) === '{}' ?
+          <div className={classes.overlay} style={{backgroundImage: 'url("https://w.wallhaven.cc/full/y8/wallhaven-y83y37.jpg")'}}></div>
+          :
           <div className={classes.info} style={{position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)"}}>
             <div className={classes.info_text}>
               <h2 style={{color: "#fff", textAlign: "center"}}>Now Playing</h2>
@@ -67,7 +75,12 @@ const listSongAPI = 'http://localhost:3000/listSong'
               <span style={{ display: "block", textAlign: "center"}}>{currentSong.author}</span>
             </div>
             <div style={{width: "100%"}}>
-              <img className={classes.img} src={currentSong.links ? currentSong.links.images[0].url: ""} alt=""/>
+              <img
+              style={{
+                width: "100%",
+                objectFit: "cover",
+                borderRadius: "50%",}}
+               className={ isRotate ? classes.img_rotate : ""} src={currentSong.links ? currentSong.links.images[0].url: ""} alt=""/>
             </div>
           </div>}
         </div>
@@ -120,6 +133,8 @@ const listSongAPI = 'http://localhost:3000/listSong'
         onClickNext={handleClickNext}
          onClickPrevious={handleClickPrevios}
          onEnded={handleClickNext}
+         onPause={(e) => setIsRotate(false)}
+        onPlay={() => setIsRotate(true)}
       />
       </div>
     </div>

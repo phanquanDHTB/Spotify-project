@@ -6,7 +6,6 @@ import {faSpotify} from '@fortawesome/free-brands-svg-icons'
 import axios from "axios"
 import AudioPlayer from 'react-h5-audio-player'
 import "react-h5-audio-player/lib/styles.css"
-import Rotation from 'react-rotation'
 
 export default function Home() {
 const listSongAPI = 'http://localhost:3000/listSong'

@@ -1,8 +1,7 @@
-import React, { useState } from 'react'
+// import React, { useState } from 'react'
 import classes from "./Form.module.scss"
-import { Form, Input, Button, Checkbox, message } from 'antd';
-import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import { Link , NavLink, useHistory} from 'react-router-dom';
+import { Form, Input, Button,  message } from 'antd';
+import { useHistory} from 'react-router-dom';
 
 export default function RegisterForm() {
   const history = useHistory()
@@ -17,7 +16,7 @@ export default function RegisterForm() {
       <Form 
       layout='vertical'
       onFinish={(value) => {
-      const {email, password, address} = value;
+      const {email, password} = value;
       message.success("Đăng Ký Thành Công")
       history.push("/login")
       localStorage.setItem("email", email)

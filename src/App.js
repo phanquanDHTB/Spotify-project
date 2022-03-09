@@ -1,11 +1,10 @@
 
 import './App.scss';
 import LoginForm from './pages/login/components/form/Form';
-import { BrowserRouter as Router, Route, Link, NavLink, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route} from "react-router-dom";
 import { Switch } from 'react-router-dom';
 import RegisterForm from './pages/register/components/form/Form';
 import Home from './pages/home/home';
-import PrivateRoute from './pages/components/protectedRoute/protectedRoute';
 
 
 

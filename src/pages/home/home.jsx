@@ -119,6 +119,7 @@ const listSongAPI = 'http://localhost:3000/listSong'
          showJumpControls={false}
         onClickNext={handleClickNext}
          onClickPrevious={handleClickPrevios}
+         onEnded={handleClickNext}
       />
       </div>
     </div>

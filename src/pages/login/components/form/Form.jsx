@@ -23,7 +23,7 @@ export default function LoginForm() {
     } else {
       message.error("Sai TK hoặc MK")
     }
-    console.log('Received values of form: ', values);
+    // console.log('Received values of form: ', values);
   };
   return (
     <div className={classes.form_wrapper}>

@@ -4,7 +4,7 @@ import { Redirect, Route } from 'react-router-dom';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
     const token = localStorage.getItem("token")
-    console.log("tokennnn", token);
+    // console.log("tokennnn", token);
     return(
     <Route {...rest} render={(props) => (
     //   fakeAuth.isAuthenticated === true

@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDownload,  } from "@fortawesome/free-solid-svg-icons"
 import {faSpotify} from '@fortawesome/free-brands-svg-icons'
 import axios from "axios"
-import AudioPlayer, {RHAP_UI} from 'react-h5-audio-player'
+import AudioPlayer from 'react-h5-audio-player'
 import "react-h5-audio-player/lib/styles.css"
 
 export default function Home() {
